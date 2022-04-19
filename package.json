@@ -29,8 +29,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "coverage": "npm test -- --coverage --watchAll"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -49,14 +48,5 @@
   },
   "devDependencies": {
     "node-sass": "^4.14.1"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
-      "!src/index.js",
-      "!src/serviceWorker.js",
-      "!<rootDir>/node_modules/",
-      "!<rootDir>/path/to/dir/"
-    ]
   }
 }

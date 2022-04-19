@@ -7,9 +7,9 @@ import SearchBar from "../components/SearchBar";
 
 import cardStore from '../store/card.store';
 import CardGrid from "../components/CardGrid";
-import DeckFormProvider, {DeckFormContext} from "../providers/DeckFormProvider";
+import DeckProvider, {DeckFormContext} from "../providers/DeckFormProvider";
 
-const DeckAddView = () => {
+const DeckAddView = ({history}) => {
     const dispatch = useDispatch();
     const cards = useSelector(cardStore.selectors.cards);
     const loading = useSelector(cardStore.selectors.loading);
@@ -31,7 +31,7 @@ const DeckAddView = () => {
         <Wrapper>
             <View>
 
-                <DeckFormProvider>
+                <DeckProvider>
                     <DeckFormContext.Consumer>
                         {
                             ({saveDeck}) => <SearchBar
@@ -47,7 +47,7 @@ const DeckAddView = () => {
                         cards={cards}
                         loading={loading}
                     />
-                </DeckFormProvider>
+                </DeckProvider>
 
             </View>
         </Wrapper>

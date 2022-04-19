@@ -13,7 +13,7 @@ import metal from '../../assets/images/metal.png';
 import psychic from '../../assets/images/psychic.png';
 import water from '../../assets/images/water.png';
 
-export const pokemonTypes = {
+const types = {
     colorless,
     darkness,
     dragon,
@@ -30,7 +30,7 @@ export const pokemonTypes = {
 const PokemonType = ({type, size}) => {
     return (
         <img
-            src={pokemonTypes[type.toLowerCase()]}
+            src={types[type.toLowerCase()]}
             alt={type}
             width={size}
             height={size}
@@ -39,7 +39,7 @@ const PokemonType = ({type, size}) => {
 };
 
 PokemonType.propTypes = {
-    type: PropTypes.string.isRequired,
+    type: PropTypes.string,
     size: PropTypes.number
 };
 

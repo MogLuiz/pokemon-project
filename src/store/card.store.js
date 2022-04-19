@@ -93,9 +93,7 @@ const actions = {
         }
     },
 
-    setLoading,
-    setPage,
-    setQuery,
+    setLoading
 
 };
 
