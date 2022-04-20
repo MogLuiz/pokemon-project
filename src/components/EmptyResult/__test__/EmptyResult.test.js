@@ -19,4 +19,11 @@ describe("EmptyResult", () => {
     expect(getByText(defaultMessage)).toBeInTheDocument();
     expect(image.width).toBe(defaultWidth);
   });
+
+  test("should render with prop message", () => {
+    const message = "Nova mensagem";
+    const { getByText } = render(<EmptyResult message={message} />);
+
+    expect(getByText(message)).toBeInTheDocument();
+  });
 });
