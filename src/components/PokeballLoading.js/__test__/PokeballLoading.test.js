@@ -30,4 +30,15 @@ describe("PokeballLoading", () => {
 
     expect(queryByText(message)).toBeInTheDocument();
   });
+
+  test("shoud render correctly with size prop", () => {
+    const size = 100;
+
+    const { getByAltText } = render(<PokeballLoading size={size} />);
+
+    const image = getByAltText(/pokeball loading/i);
+
+    expect(image.width).toBe(size);
+    expect(image.height).toBe(size);
+  });
 });
