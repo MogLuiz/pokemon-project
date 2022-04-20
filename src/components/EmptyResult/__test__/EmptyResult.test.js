@@ -20,10 +20,17 @@ describe("EmptyResult", () => {
     expect(image.width).toBe(defaultWidth);
   });
 
-  test("should render with prop message", () => {
+  test("should render with message prop", () => {
     const message = "Nova mensagem";
     const { getByText } = render(<EmptyResult message={message} />);
 
     expect(getByText(message)).toBeInTheDocument();
+  });
+
+  test("shoud render with width prop", () => {
+    const width = 250;
+    const { getByAltText } = render(<EmptyResult width={width} />);
+
+    expect(getByAltText(/empty result/i).width).toBe(width);
   });
 });
