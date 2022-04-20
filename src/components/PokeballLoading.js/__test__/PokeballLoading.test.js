@@ -18,4 +18,16 @@ describe("PokeballLoading", () => {
     expect(image.width).toBe(defaultSize);
     expect(image.height).toBe(defaultSize);
   });
+
+  test("should render with the correctly message", () => {
+    const message = "Mensagem de loading";
+
+    const { queryByText, rerender } = render(<PokeballLoading />);
+
+    expect(queryByText(message)).not.toBeInTheDocument();
+
+    rerender(<PokeballLoading message={message} />);
+
+    expect(queryByText(message)).toBeInTheDocument();
+  });
 });
