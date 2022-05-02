@@ -24,11 +24,25 @@ const setupTestHelper = (props) => {
   return { ...renderResult, inputElement, buttonElement, inputDelay };
 };
 
+jest.useFakeTimers();
+
 describe("SearchBar", () => {
   it("should render with default props", () => {
     const { inputElement, buttonElement } = setupTestHelper();
 
     expect(inputElement).toBeInTheDocument();
     expect(buttonElement).toBeInTheDocument();
+  });
+
+  it("input should emit onChange event with debounce delay", () => {
+    const onChange = jest.fn();
+    const { inputDelay, inputElement } = setupTestHelper({ onChange });
+
+    fireEvent.change(inputElement, { target: { value: "Beterraba" } });
+
+    jest.advanceTimersByTime(inputDelay);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith({ target: inputElement });
   });
 });
