@@ -1,23 +1,27 @@
 // Packages
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 
 // Components
 import SearchBar from "../SearchBar";
 
-const setupTestHelper = (
-  props = {
+const setupTestHelper = (props) => {
+  const defaultProps = {
     placeholder: "Pesquise...",
     buttonLabel: "Botão",
     inputDelay: 200,
-  }
-) => {
-  const renderResult = render(<SearchBar {...props} />);
+    ...props,
+  };
 
-  const inputElement = renderResult.getByPlaceholderText(props.placeholder);
-  const buttonElement = renderResult.getByText(props.buttonLabel);
+  const renderResult = render(<SearchBar {...defaultProps} />);
 
-  return { ...renderResult, inputElement, buttonElement };
+  const inputElement = renderResult.getByPlaceholderText(
+    defaultProps.placeholder
+  );
+  const buttonElement = renderResult.getByText(defaultProps.buttonLabel);
+  const inputDelay = defaultProps.inputDelay;
+
+  return { ...renderResult, inputElement, buttonElement, inputDelay };
 };
 
 describe("SearchBar", () => {
