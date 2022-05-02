@@ -45,4 +45,14 @@ describe("SearchBar", () => {
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenCalledWith({ target: inputElement });
   });
+
+  it("button should emit onButtonClick event", () => {
+    const onButtonClick = jest.fn();
+    const { buttonElement } = setupTestHelper({ onButtonClick });
+
+    fireEvent.click(buttonElement);
+    fireEvent.click(buttonElement);
+
+    expect(onButtonClick).toHaveBeenCalledTimes(2);
+  });
 });
