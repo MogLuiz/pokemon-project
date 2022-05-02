@@ -14,8 +14,17 @@ const setupTestHelper = (
 ) => {
   const renderResult = render(<SearchBar {...props} />);
 
-  const inputElement = renderResult.getAllByPlaceholderText(/Pesquise.../i);
-  const buttonElement = renderResult.getByText(/botão/i);
+  const inputElement = renderResult.getByPlaceholderText(props.placeholder);
+  const buttonElement = renderResult.getByText(props.buttonLabel);
 
   return { ...renderResult, inputElement, buttonElement };
 };
+
+describe("SearchBar", () => {
+  it("should render with default props", () => {
+    const { inputElement, buttonElement } = setupTestHelper();
+
+    expect(inputElement).toBeInTheDocument();
+    expect(buttonElement).toBeInTheDocument();
+  });
+});
